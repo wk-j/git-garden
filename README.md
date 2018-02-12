@@ -1,10 +1,10 @@
-# React-Static - Basic Example
+## GitHub Garden 
 
-This example is the most basic version of react-static available. It includes:
-- Babel
-- CSS imports
-- Image imports
-- File imports
-- Automatic Routing
+- [x] TypeScript
 
-To get started, run `react-static create` and use the `basic` template.
+## Start
+
+```bash
+npm start
+open http://localhost:1234/wk-j
+```

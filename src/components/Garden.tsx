@@ -1,10 +1,10 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import * as React from 'react'
+import { connect } from 'react-redux'
 import styled from 'react-emotion'
-import {compose, lifecycle} from 'recompose'
-import {splitEvery} from 'ramda'
+import { compose, lifecycle } from 'recompose'
+import { splitEvery } from 'ramda'
 
-import {fetchGarden, select} from '../ducks/app'
+import { fetchGarden, select } from '../ducks/app'
 
 function getTile(count) {
   if (count === 0) {
@@ -37,22 +37,22 @@ function getCol(col, extra) {
   return `translate(${col * X_POS + extra}em, ${col * -Y_POS + extra}em)`
 }
 
-const Scene = styled.div`
+const Scene = styled("div") `
   position: relative;
-  transform: translateY(${props => props.i * 45 + 20}em);
+  transform: translateY(${(props: any) => props.i * 45 + 20}em);
   filter: drop-shadow(rgba(130, 231, 60, 0.6) 0px 0px 12px);
 `
 
-const Row = styled.div`
+const Row = styled("div") `
   position: relative;
-  z-index: ${props => props.row};
+  z-index: ${(props: any) => props.row};
 
-  transform: ${props => getRow(props.row)};
+  transform: ${(props: any) => getRow(props.row)};
 `
 
-const Tile = styled.img`
+const Tile = styled("img") `
   position: absolute;
-  z-index: ${props => 7 - props.col};
+  z-index: ${(props: any) => 7 - props.col};
 
   width: ${SIZE}em;
   height: ${SIZE}em;
@@ -60,16 +60,16 @@ const Tile = styled.img`
   cursor: pointer;
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  transform: ${props => getCol(props.col, 0)};
+  transform: ${(props: any) => getCol(props.col, 0)};
 
   &:hover {
     z-index: 50;
     filter: drop-shadow(rgb(130, 231, 60) 0px 0px 12px);
-    transform: ${props => getCol(props.col, -1.2)} scale(1.3);
+    transform: ${(props: any) => getCol(props.col, -1.2)} scale(1.3);
   }
 `
 
-const Week = ({row, week, select}) => (
+const Week = ({ row, week, select }) => (
   <Row key={row} row={row}>
     {week.map((day, col) => (
       <Tile
@@ -82,11 +82,11 @@ const Week = ({row, week, select}) => (
   </Row>
 )
 
-const Container = styled.div`
+const Container = styled("div") `
   transform: translateX(25%) scale(0.75);
 `
 
-const Garden = ({garden, select}) => (
+const Garden = ({ garden, select }) => (
   <Container>
     {splitEvery(7, garden).map((weeks, i) => {
       return (
@@ -105,7 +105,7 @@ const mapStateToProps = state => ({
 })
 
 const enhance = compose(
-  connect(mapStateToProps, {fetchGarden, select}),
+  connect(mapStateToProps, { fetchGarden, select }),
   lifecycle({
     async componentWillMount() {
       const id = this.props.username

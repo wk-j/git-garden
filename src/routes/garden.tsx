@@ -1,13 +1,13 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import * as React from 'react'
+import { connect } from 'react-redux'
 import styled from 'react-emotion'
-import {createSelector} from 'reselect'
+import { createSelector } from 'reselect'
 
 import Garden from '../components/Garden'
 
-const Container = styled.div``
+const Container = styled("div") ``
 
-const Count = styled.span`
+const Count = styled("span") `
   position: fixed;
   z-index: 200;
   display: flex;
@@ -18,17 +18,17 @@ const Count = styled.span`
   font-size: 1.4em;
 `
 
-const Title = styled.h1`
+const Title = styled("h1") `
   margin: 0;
   padding-top: 1em;
   text-align: center;
 `
 
-const SubTitle = styled.h2`
+const SubTitle = styled("h2") `
   text-align: center;
 `
 
-const GardenView = ({total, curr, match: {params}}) => (
+const GardenView = ({ total, curr, match: { params } }) => (
   <Container>
     <Title>Garden of {params.id}</Title>
     <SubTitle>Total Contributions: {total}</SubTitle>
@@ -45,7 +45,7 @@ const GardenView = ({total, curr, match: {params}}) => (
 )
 
 const currSelector = createSelector(
-  state => state.app.garden,
+  (state: any) => state.app.garden,
   state => state.app.cursor.row,
   state => state.app.cursor.col,
   (garden, row, col) => {
@@ -56,7 +56,7 @@ const currSelector = createSelector(
 )
 
 const totalSelector = createSelector(
-  state => state.app.garden || [],
+  (state: any) => state.app.garden || [],
   garden =>
     garden
       .reduce((x, y) => [...x, ...y], [])

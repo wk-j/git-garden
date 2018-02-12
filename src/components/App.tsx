@@ -1,20 +1,24 @@
-import React from 'react'
-import {Provider} from 'react-redux'
-import {Router, Route, Switch} from 'react-static'
-import {lifecycle} from 'recompose'
-import {injectGlobal} from 'emotion'
-
+import * as React from 'react'
+import { Provider } from 'react-redux'
+import { lifecycle } from 'recompose'
+import { injectGlobal } from 'emotion'
+import { Route, Switch, Router } from "react-router-dom"
 import Landing from '../routes'
 import Garden from '../routes/garden'
 import NotFound from '../routes/404'
+
+import createBrowserHistory from 'history/createBrowserHistory'
 
 import createStore from '../ducks'
 
 const store = createStore()
 
+
+const customHistory = createBrowserHistory()
+
 const App = () => (
   <Provider store={store}>
-    <Router>
+    <Router history={customHistory}>
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/:id" component={Garden} />

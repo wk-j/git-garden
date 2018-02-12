@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "types": [
+            "node"
+        ],
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react",
+        "lib": [
+            "es6",
+            "dom",
+        ],
+        "sourceMap": true,
+        "rootDir": ".",
+        "outDir": "build"
+    },
+    "exclude": [
+        "node_modules",
+        ".vscode-test"
+    ]
+}

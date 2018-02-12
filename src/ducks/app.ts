@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {takeEvery, call, put} from 'redux-saga/effects'
-
-import {createReducer, Creator} from './helper'
+import { takeEvery, call, put } from 'redux-saga/effects'
+import { createReducer, Creator } from './helper'
+import { Action } from 'redux';
 
 export const FETCH_GARDEN = 'FETCH_GARDEN'
 export const SET_GARDEN = 'SET_GARDEN'
@@ -19,9 +19,9 @@ const getTile = tile => ({
   count: parseInt(tile.getAttribute('data-count')),
 })
 
-export function* fetchGardenSaga({payload}) {
-  const {data: html} = yield call(axios.get, endpoint + payload)
-  const parser = new window.DOMParser()
+export function* fetchGardenSaga({ payload }) {
+  const { data: html } = yield call(axios.get, endpoint + payload)
+  const parser = new DOMParser()
   const dom = parser.parseFromString(html, 'text/html')
 
   const rows = dom
@@ -29,9 +29,12 @@ export function* fetchGardenSaga({payload}) {
     .querySelector('g')
     .querySelectorAll('g')
 
-  const contributions = [...rows]
+  var arr = Array.from(rows)
+
+  //const contributions = [...rows]
+  const contributions = [...arr]
     .reverse()
-    .map(week => [...week.querySelectorAll('.day')].map(getTile))
+    .map(week => [...Array.from(week.querySelectorAll('.day'))].map(getTile))
 
   console.log(contributions)
 
@@ -44,7 +47,7 @@ export function* appWatcherSaga() {
 
 const initial = {
   garden: [],
-  cursor: {row: 0, col: 0},
+  cursor: { row: 0, col: 0 },
 }
 
 export default createReducer(initial, state => ({
@@ -52,8 +55,8 @@ export default createReducer(initial, state => ({
     ...state,
     garden,
   }),
-  [SELECT]: ({row, col}) => ({
+  [SELECT]: ({ row, col }) => ({
     ...state,
-    cursor: {row, col},
+    cursor: { row, col },
   }),
 }))

@@ -1,8 +1,10 @@
-import {compose, createStore, applyMiddleware} from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import {persistStore} from 'redux-persist'
+//import { persistStore } from 'redux-persist'
 
-import {reducers, rootSaga} from './root'
+import { reducers, rootSaga } from './root'
+
+declare var module
 
 /* eslint no-undef: 0 */
 
@@ -12,7 +14,7 @@ export default () => {
   let composeEnhancers = compose
 
   if (typeof window !== 'undefined') {
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    // composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   }
 
   const store = createStore(
@@ -20,7 +22,7 @@ export default () => {
     composeEnhancers(applyMiddleware(...middleware)),
   )
 
-  persistStore(store)
+  // persistStore(store)
 
   if (module.hot) {
     module.hot.accept(() => {
