@@ -6,7 +6,6 @@ import { createReducer, Creator } from "./helper"
 export const FETCH_GARDEN = "FETCH_GARDEN"
 export const SET_GARDEN = "SET_GARDEN"
 export const SELECT = "SELECT"
-
 export const fetchGarden = Creator(FETCH_GARDEN)
 export const setGarden = Creator(SET_GARDEN)
 export const select = Creator(SELECT, "row", "col")
@@ -23,18 +22,14 @@ export function* fetchGardenSaga({ payload }) {
   const { data: html } = yield call(axios.get, endpoint + payload)
   const parser = new DOMParser()
   const dom = parser.parseFromString(html, "text/html")
-
   const rows = dom
     .querySelector(".js-calendar-graph-svg")
     .querySelector("g")
     .querySelectorAll("g")
-
   const arr = Array.from(rows)
-
   const contributions = [...arr]
     .reverse()
     .map(week => [...Array.from(week.querySelectorAll(".day"))].map(getTile))
-
   yield put(setGarden(contributions))
 }
 

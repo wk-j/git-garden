@@ -31,6 +31,5 @@ export default () => {
   }
 
   saga.run(rootSaga)
-
   return store
 }

@@ -3,7 +3,6 @@ import * as React from "react"
 import styled from "react-emotion"
 import { connect } from "react-redux"
 import { compose, lifecycle } from "recompose"
-
 import { fetchGarden, select } from "../ducks/app"
 
 function getTile(count) {
@@ -25,7 +24,6 @@ function getTile(count) {
 }
 
 const SIZE = 10
-
 const X_POS = 4
 const Y_POS = 2.7
 

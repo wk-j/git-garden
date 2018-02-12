@@ -8,7 +8,8 @@
         "semicolon": false,
         "arrow-parens": false,
         "eofline": false,
-        "no-unused-expression": false
+        "no-unused-expression": false,
+        "max-line-length": false
     },
     "rulesDirectory": []
 }

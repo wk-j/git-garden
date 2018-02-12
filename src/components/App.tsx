@@ -1,15 +1,13 @@
 import { injectGlobal } from "emotion"
+import createBrowserHistory from "history/createBrowserHistory"
 import * as React from "react"
 import { Provider } from "react-redux"
 import { Route, Router, Switch } from "react-router-dom"
 import { lifecycle } from "recompose"
+import createStore from "../ducks"
 import Landing from "../routes"
 import NotFound from "../routes/404"
 import Garden from "../routes/garden"
-
-import createBrowserHistory from "history/createBrowserHistory"
-
-import createStore from "../ducks"
 
 const store = createStore()
 
