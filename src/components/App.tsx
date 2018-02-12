@@ -1,18 +1,17 @@
-import * as React from 'react'
-import { Provider } from 'react-redux'
-import { lifecycle } from 'recompose'
-import { injectGlobal } from 'emotion'
-import { Route, Switch, Router } from "react-router-dom"
-import Landing from '../routes'
-import Garden from '../routes/garden'
-import NotFound from '../routes/404'
+import { injectGlobal } from "emotion"
+import * as React from "react"
+import { Provider } from "react-redux"
+import { Route, Router, Switch } from "react-router-dom"
+import { lifecycle } from "recompose"
+import Landing from "../routes"
+import NotFound from "../routes/404"
+import Garden from "../routes/garden"
 
-import createBrowserHistory from 'history/createBrowserHistory'
+import createBrowserHistory from "history/createBrowserHistory"
 
-import createStore from '../ducks'
+import createStore from "../ducks"
 
 const store = createStore()
-
 
 const customHistory = createBrowserHistory()
 
@@ -37,7 +36,6 @@ const enhance = lifecycle({
         min-height: 100vh;
         font-weight: 300;
         font-family: Roboto, "Helvetica Neue", "Sukhumvit Set", Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
-
         background: #fbfcff;
       }
 

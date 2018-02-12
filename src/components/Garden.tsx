@@ -1,26 +1,26 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import styled from 'react-emotion'
-import { compose, lifecycle } from 'recompose'
-import { splitEvery } from 'ramda'
+import { splitEvery } from "ramda"
+import * as React from "react"
+import styled from "react-emotion"
+import { connect } from "react-redux"
+import { compose, lifecycle } from "recompose"
 
-import { fetchGarden, select } from '../ducks/app'
+import { fetchGarden, select } from "../ducks/app"
 
 function getTile(count) {
   if (count === 0) {
-    return require('../assets/0.svg')
+    return require("../assets/0.svg")
   } else if (count >= 1 && count < 5) {
-    return require('../assets/1.svg')
+    return require("../assets/1.svg")
   } else if (count >= 5 && count < 10) {
-    return require('../assets/2.svg')
+    return require("../assets/2.svg")
   } else if (count >= 10 && count < 20) {
-    return require('../assets/3.svg')
+    return require("../assets/3.svg")
   } else if (count >= 20 && count < 30) {
-    return require('../assets/4.svg')
+    return require("../assets/4.svg")
   } else if (count >= 30 && count < 40) {
-    return require('../assets/5.svg')
+    return require("../assets/5.svg")
   } else if (count >= 40) {
-    return require('../assets/6.svg')
+    return require("../assets/6.svg")
   }
 }
 
@@ -46,7 +46,6 @@ const Scene = styled("div") `
 const Row = styled("div") `
   position: relative;
   z-index: ${(props: any) => props.row};
-
   transform: ${(props: any) => getRow(props.row)};
 `
 
@@ -69,6 +68,7 @@ const Tile = styled("img") `
   }
 `
 
+// tslint:disable-next-line:no-shadowed-variable
 const Week = ({ row, week, select }) => (
   <Row key={row} row={row}>
     {week.map((day, col) => (
@@ -86,11 +86,13 @@ const Container = styled("div") `
   transform: translateX(25%) scale(0.75);
 `
 
+// tslint:disable-next-line:no-shadowed-variable
 const Garden = ({ garden, select }) => (
   <Container>
     {splitEvery(7, garden).map((weeks, i) => {
       return (
-        <Scene key={i} i={i}>
+        <Scene key={i} i={i}
+        >
           {weeks.map((week, row) => (
             <Week key={row} row={row} week={week} select={select} />
           ))}

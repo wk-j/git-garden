@@ -1,9 +1,8 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import styled from 'react-emotion'
-import { createSelector } from 'reselect'
-
-import Garden from '../components/Garden'
+import * as React from "react"
+import styled from "react-emotion"
+import { connect } from "react-redux"
+import { createSelector } from "reselect"
+import Garden from "../components/Garden"
 
 const Container = styled("div") ``
 
@@ -64,8 +63,8 @@ const totalSelector = createSelector(
 )
 
 const mapStateToProps = state => ({
-  total: totalSelector(state),
   curr: currSelector(state),
+  total: totalSelector(state),
 })
 
 const enhance = connect(mapStateToProps)

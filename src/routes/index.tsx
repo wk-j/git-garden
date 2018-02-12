@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import styled from 'react-emotion'
+import * as React from "react"
+import styled from "react-emotion"
+import { connect } from "react-redux"
 
 const Landing = () => <h1>Hello, World!</h1>
 

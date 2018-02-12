@@ -1,3 +1,3 @@
-import * as React from 'react'
+import * as React from "react"
 
 export default () => <h1>404 Not Found</h1>
